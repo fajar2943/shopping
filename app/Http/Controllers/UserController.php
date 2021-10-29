@@ -12,21 +12,23 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $user = User::create([
             'username' => $request->username, 'email' => $request->email,
             'encrypted_password' => bcrypt($request->encrypted_password),
+            'remember_token' => uniqid(),
             'phone' => $request->phone, 'address' => $request->address,
             'city' => $request->city, 'country' => $request->country,
             'name' => $request->name, 'postcode' => $request->postcode
         ]);
 
-        return 'Data berhasil disimpan';
+        return ['email' => $user->email, 'remember_token' => $user->remember_token, 'username' => $user->username];
     }
 
     public function sign_in(Request $request)
     {
-        return $request;
+        $user = User::where('email', $request->email)->first();
+        return ['email' => $user->email, 'remember_token' => $user->remember_token, 'username' => $user->username];
     }
 }

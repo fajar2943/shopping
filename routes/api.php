@@ -20,12 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/api/users/signup', [UserController::class, 'store']);
-Route::post('/api/users/signin', [UserController::class, 'sign_in']);
-Route::get('/api/users', [UserController::class, 'index']);
+Route::post('/users/signup', [UserController::class, 'store']);
+Route::post('/users/signin', [UserController::class, 'sign_in']);
+Route::get('/users', [UserController::class, 'index']);
 
-Route::post('/api/shopping', [ShoppingController::class, 'store']);
-Route::get('/api/shopping', [ShoppingController::class, 'index']);
-Route::get('/api/shopping/{id}', [ShoppingController::class, 'show']);
-Route::put('/api/shopping/{id}', [ShoppingController::class, 'update']);
-Route::delete('/api/shopping/{id}', [ShoppingController::class, 'destroy']);
+Route::post('/shopping', [ShoppingController::class, 'store']);
+Route::get('/shopping', [ShoppingController::class, 'index']);
+Route::get('/shopping/{id}', [ShoppingController::class, 'show']);
+Route::put('/shopping/{id}', [ShoppingController::class, 'update']);
+Route::delete('/shopping/{id}', [ShoppingController::class, 'destroy']);
