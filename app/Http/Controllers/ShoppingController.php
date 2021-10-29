@@ -14,7 +14,7 @@ class ShoppingController extends Controller
 
     public function store(Request $request)
     {
-        $shopping = Shopping::create(['name' => $request->name, 'created_at' => $request->created_at]);
+        $shopping = Shopping::create(['name' => $request->name]);
         return ['created_at' => $shopping->created_at, 'id' => $shopping->id, 'name' => $shopping->name];
     }
 
@@ -26,8 +26,8 @@ class ShoppingController extends Controller
 
     public function update(Request $request, $id)
     {
-        $shopping = Shopping::find($id)->update(['nama' => $request->nama]);
-        return $shopping;
+        $shopping = Shopping::find($id)->update(['name' => $request->name]);
+        return 'data berhasil diupdate';
     }
 
     public function destroy($id)
